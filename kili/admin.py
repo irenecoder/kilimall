@@ -5,8 +5,10 @@ from .models import Product,Category
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name','slug']
+    prepopulated_fields = {'slug':('name',)}
     
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['name','description','category','posted']
-    list_filter = ['name','slug']
+    list_display = ['name','description','category','posted','price']
+    list_filter = ['available','posted','updated']
+    prepopulated_fields = {'slug': ('name',)}
