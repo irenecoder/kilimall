@@ -21,6 +21,7 @@ class Product(models.Model):
     updated = models.DateTimeField(auto_now=True)
     slug = models.SlugField(max_length=200,blank=True)
     available = models.BooleanField(default=False)
+    image = models.ImageField(upload_to='products/%Y/%m/%d',blank=True)
 
     class Meta:
         ordering = ('name',)
