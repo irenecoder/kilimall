@@ -5,11 +5,16 @@ from .models import Product,Category
 def products(request,category_slug=None):
     category = None 
     categories = Category.objects.all()
-    products= Product.objects.filter('available')
+    products= Product.objects.filter(available=True)
 
     if category_slug:
         category = get_object_or_404(Category,slug=category_slug)
         products = products.filter(category=category)
 
     return render(request,'kili/home.html',context={'category':category,'categories':categories,'products':products})
+
+def product_detail(request,id,slug):
+    product=get_object_or_404(Product,id=id,slug=slug,available=True)
+    return render(request,'kili/product.html',context={'product':product})
+
 
