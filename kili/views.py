@@ -18,3 +18,17 @@ def product_detail(request,id,slug):
     return render(request,'kili/product.html',context={'product':product})
 
 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
