@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Orders
+from .models import Orders,OrderItem
 
 # Register your models here.
 @admin.register(Orders)
@@ -9,6 +9,7 @@ class OrdersAdmin(admin.ModelAdmin):
     list_filter = ['paid','created_date','updated_date']
     inlines = ['OrderItemInline']
 
+
 class OrderItemInline(admin.TabularInline):
-    model = Orders
+    model = OrderItem
     raw_id_fields = ['product']
